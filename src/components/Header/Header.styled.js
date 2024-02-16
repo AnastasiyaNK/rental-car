@@ -12,9 +12,7 @@ export const StyledHeader = styled.header`
 
     align-items: center;
     border-radius: 5px;
-
-    /* border-radius: 0px 0px 8px 8px; */
-    border: 1.5px solid rgb(52, 112, 255);
+    border: 1.5px solid #3470ff;
   }
   .header-nav {
     display: flex;
@@ -22,16 +20,12 @@ export const StyledHeader = styled.header`
     gap: 80px;
   }
   .nav-text {
-    color: rgb(18, 20, 23);
-    font-size: 14px;
-
     font-weight: 500;
-    line-height: 18px;
-    letter-spacing: -0.56px;
+    font-size: 18px;
+    line-height: 1.11;
+    color: #121417;
     text-transform: uppercase;
-    padding: 8px 16px;
     transition: all 0.3s;
-
     text-decoration: none;
   }
 `;

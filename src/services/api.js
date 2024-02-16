@@ -1,11 +1,19 @@
 import axios from "axios";
 
 export const carInstance = axios.create({
-  baseURL: "https://mockapi.io/projects/6538c7dca543859d1bb1e825",
+  baseURL: "https://6538c7dca543859d1bb1e824.mockapi.io",
 });
 
-export const requestCars = async () => {
-  const { data } = await carInstance.get("/cars");
+export const requestCars = async (page = 1, limit = 12) => {
+  const { data } = await carInstance.get(`/cars?page=${page}&limit=${limit}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return data;
+};
+export const requestAddCars = async () => {
+  const { data } = await carInstance.post("/cars");
   return data;
 };
 

@@ -2,26 +2,33 @@ import React from "react";
 import CarFoto from "assets/images/image.jpeg";
 import { StyledCard } from "./Card.styled";
 
-const CardCars = () => {
+const CardCars = ({
+  id,
+  type,
+  year,
+  make,
+  model,
+  img,
+  rentalPrice,
+  rentalCompany,
+  address,
+  mileage,
+}) => {
+  const formattedAddress = address.split(", ");
+  const tags = [...formattedAddress, rentalCompany, type, model, mileage];
   return (
     <StyledCard>
-      <li className="card-item">
-        <img src={CarFoto} alt="car" />
-        <h2 className="card-title">Buick Enclave, 2008</h2>
-        <p className="card-price">$40</p>
-        <div className="card-wrapper">
-          <span className="card-description">Lviv | </span>
-          <span className="card-description">Ukraine | </span>
-          <span className="card-description">Luxury Car Rentals | </span>
-          <span className="card-description">Luxury Car Rentals | </span>
-          <span className="card-description">Premium | </span>
-          <span className="card-description">SUV | </span>
-          <span className="card-description">Enclave | </span>
-          <span className="card-description">9582 | </span>
-          <span className="card-description">Power liftgate | </span>
-        </div>
-        <button className="card-btn">Learn more</button>
-      </li>
+      <img className="card-img" src={img || CarFoto} alt="car" />
+      <div className="wrapper">
+        <h3 className="card-title">
+          {make} <span className="current-title">{model}</span>, {year}
+        </h3>
+        <p className="card-price">{rentalPrice}</p>
+      </div>
+
+      <p className="card-description">{tags.join(" | ")}</p>
+
+      <button className="card-btn">Learn more</button>
     </StyledCard>
   );
 };
