@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { apiGetCars } from "../../redux/carsSlice";
 import {
@@ -15,16 +15,22 @@ const Main = () => {
   const isLoading = useSelector(selectCarIsLoading);
   const error = useSelector(selectCarError);
   const cars = useSelector(selectCarItems);
+  const [page, setPage] = useState(1);
+  console.log(isLoading);
+  const heandlerLoadMore = () => {
+    setPage(page + 1);
+  };
 
   useEffect(() => {
-    dispatch(apiGetCars());
-  }, [dispatch]);
+    dispatch(apiGetCars(page));
+  }, [dispatch, page]);
 
   return (
     <MainContainer>
       <StyledMainPage>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}
+        <div></div>
 
         <ul className="cars-list">
           {cars?.map(
@@ -58,6 +64,9 @@ const Main = () => {
             }
           )}
         </ul>
+        <button onClick={heandlerLoadMore} className="load-more">
+          Load more
+        </button>
       </StyledMainPage>
     </MainContainer>
   );

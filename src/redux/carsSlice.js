@@ -1,18 +1,13 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import {
-  requestAddCars,
-  requestCarById,
-  requestCars,
-  requestDeleteCar,
-} from "services/api";
+import { requestAddCars, requestCars, requestDeleteCar } from "services/api";
 
 export const apiGetCars = createAsyncThunk(
   "cars/carList",
-  async (_, thunkApi) => {
+  async (page, thunkApi) => {
     try {
-      const response = await requestCars();
-      console.log(response);
-      return response;
+      const response = await requestCars(page);
+
+      return { page, response };
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -29,17 +24,7 @@ export const apiAddCars = createAsyncThunk(
     }
   }
 );
-export const apiCarById = createAsyncThunk(
-  "cars/carById",
-  async (carId, thunkApi) => {
-    try {
-      const response = await requestCarById(carId);
-      return response;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+
 export const apiDeleteCar = createAsyncThunk(
   "cars/deleteCar",
   async (carId, thunkApi) => {
@@ -56,18 +41,34 @@ const INITIAL_STATE = {
   items: [],
   isLoading: false,
   error: null,
+  favoriteCarIds: [],
 };
 
 export const carSlice = createSlice({
   name: "cars",
   initialState: INITIAL_STATE,
 
+  reducers: {
+    toggleFavorite(state, action) {
+      if (state.favoriteCarIds.includes(action.payload)) {
+        state.favoriteCarIds = state.favoriteCarIds.filter(
+          (el) => action.payload !== el
+        );
+      } else {
+        state.favoriteCarIds = [...state.favoriteCarIds, action.payload];
+      }
+    },
+  },
+
   extraReducers: (builder) =>
     builder
 
       //---------Get----------
       .addCase(apiGetCars.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items =
+          action.payload.page === 1
+            ? action.payload.response
+            : [...state.items, ...action.payload.response];
         state.isLoading = false;
       })
       //---------Add----------
@@ -75,11 +76,7 @@ export const carSlice = createSlice({
         state.items = action.payload;
         state.isLoading = false;
       })
-      //---------getOwn----------
-      .addCase(apiCarById.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.isLoading = false;
-      })
+
       //---------deleteOwn----------
       .addCase(apiDeleteCar.fulfilled, (state, action) => {
         state.items = action.payload;
@@ -90,7 +87,7 @@ export const carSlice = createSlice({
         isAnyOf(
           apiGetCars.pending,
           apiAddCars.pending,
-          apiCarById.pending,
+
           apiDeleteCar.pending
         ),
         (state) => {
@@ -102,7 +99,7 @@ export const carSlice = createSlice({
         isAnyOf(
           apiGetCars.rejected,
           apiAddCars.rejected,
-          apiCarById.rejected,
+
           apiDeleteCar.rejected
         ),
         (state) => {
@@ -111,5 +108,6 @@ export const carSlice = createSlice({
         }
       ),
 });
+export const { toggleFavorite } = carSlice.actions;
 
 export const carReducer = carSlice.reducer;
