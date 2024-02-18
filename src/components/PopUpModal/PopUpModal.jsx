@@ -125,9 +125,11 @@ const PopUpModal = () => {
             </p>
           </div> */}
 
-          <button type="button" className="btn">
-            Rental car
-          </button>
+          <a href="tel: +380730000000">
+            <button type="button" className="btn">
+              Rental car
+            </button>
+          </a>
         </div>
       )}
     </StylrdPopUpModal>

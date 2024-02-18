@@ -10,5 +10,4 @@ export const StyledLoaderBackdrop = styled.div`
   left: 0;
   background-color: rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  z-index: 10;
 `;

@@ -126,13 +126,19 @@ const Main = () => {
             }
           )}
         </ul>
-        {isLoading ? (
+        {cars?.length !== null && (
+          <button onClick={heandlerLoadMore} className="load-more">
+            Load more
+          </button>
+        )}
+
+        {/* {isLoading ? (
           <Loader />
         ) : (
           <button onClick={heandlerLoadMore} className="load-more">
             Load more
           </button>
-        )}
+        )} */}
       </StyledMainPage>
     </MainContainer>
   );

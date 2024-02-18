@@ -64,36 +64,88 @@ const Filter = () => {
   };
   return (
     <StyledFilter onSubmit={onSubmit}>
-      <div>
-        <p>Car brand</p>
+      <div className="form-wrapper">
+        <label className="label">Car brand</label>
         <Select
+          className="select-brand"
+          placeholder="Enter the text"
           defaultValue={carBrand}
           onChange={setCarBrand}
           options={carBrandsOptions}
+          styles={{
+            control: (styles) => ({
+              ...styles,
+              width: "224px",
+              border: "none",
+              borderRadius: "14px",
+              marginTop: 8,
+              fontSize: "18px",
+              height: " 48px",
+              backgroundColor: "#f7f7fb",
+              appearance: "none",
+              fontWeight: 500,
+              lineHeight: 1.11,
+            }),
+            placeholder: (styles) => ({
+              ...styles,
+              color: "#121417",
+              margin: 0,
+              paddingLeft: "18px",
+            }),
+          }}
         />
       </div>
       <div>
-        <p>Price/ 1 hour</p>
+        <label className="label">Price/ 1 hour</label>
         <Select
+          className="select-rental"
+          placeholder="To $"
           defaultValue={carRental}
           onChange={setCarRental}
           options={carRentOption}
+          styles={{
+            control: (styles) => ({
+              ...styles,
+              width: "125px",
+              border: "none",
+              borderRadius: "14px",
+              marginTop: 8,
+              height: " 48px",
+              fontSize: "18px",
+              backgroundColor: "#f7f7fb",
+              appearance: "none",
+              fontWeight: 500,
+              lineHeight: 1.11,
+            }),
+            placeholder: (styles) => ({
+              ...styles,
+              color: "color: #121417;",
+              margin: 0,
+              paddingLeft: "18px",
+            }),
+          }}
         />
       </div>
-      <div>
-        <p>Car mileage / km</p>
-        <input
-          value={mileageFrom}
-          onChange={(e) => setMileageFrom(e.target.value)}
-          type="text"
-        />
-        <input
-          value={mileageTo}
-          onChange={(e) => setMileageTo(e.target.value)}
-          type="text"
-        />
+      <div className="input-wrapper">
+        <label className="label">Car mileage / km</label>
+        <div>
+          <input
+            className="input-from"
+            placeholder="From"
+            value={mileageFrom}
+            onChange={(e) => setMileageFrom(e.target.value)}
+            type="text"
+          />
+          <input
+            className="input-to"
+            placeholder="To"
+            value={mileageTo}
+            onChange={(e) => setMileageTo(e.target.value)}
+            type="text"
+          />
+        </div>
       </div>
-      <button type="submit" className="saerchBtn">
+      <button type="submit" className="saerch-btn">
         Search
       </button>
     </StyledFilter>
