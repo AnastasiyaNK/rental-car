@@ -77,5 +77,13 @@ export const StyledCard = styled.li`
     font-size: 14px;
     line-height: 1.43;
     color: #fff;
+
+    &:hover {
+      background-color: #0b44cd;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
   }
 `;

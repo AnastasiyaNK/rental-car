@@ -7,3 +7,4 @@ export const selectOpenModal = (state) => state.modal.isOpen;
 
 export const selectCardId = (state) => state.modal.selectedCardId;
 export const selectCarDetails = (state) => state.modal.carDetails;
+export const selectModalIsLoading = (state) => state.modal.isLoading;

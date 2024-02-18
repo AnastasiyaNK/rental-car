@@ -4,7 +4,10 @@ import { ROUTE_PATH } from "helpers/constants";
 
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import { selectCarIsLoading } from "./redux/carsSlice.selectors";
+import {
+  selectCarIsLoading,
+  selectModalIsLoading,
+} from "./redux/carsSlice.selectors";
 import { Suspense, lazy } from "react";
 
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -13,6 +16,7 @@ const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
 
 function App() {
   const isLoading = useSelector(selectCarIsLoading);
+  const isModalLoading = useSelector(selectModalIsLoading);
   return (
     <div>
       <Layout>
@@ -25,7 +29,7 @@ function App() {
           <PopUpModal />
         </Suspense>
       </Layout>
-      {isLoading ? <Loader /> : null}
+      {isLoading || isModalLoading ? <Loader /> : null}
     </div>
   );
 }
