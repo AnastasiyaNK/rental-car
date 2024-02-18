@@ -13,28 +13,16 @@ export const StylrdPopUpModal = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
   z-index: 10;
+
   .pop-up-container {
     position: relative;
     height: auto;
     max-height: 90vh;
     overflow-y: auto;
     background-color: #ffffff;
-    color: black;
-    padding: 32px 24px;
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.1;
-
-    @media (min-width: 1440px) {
-      width: 541px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1439px) {
-      width: 592px;
-    }
-    @media (min-width: 320px) and (max-width: 767px) {
-      width: 280px;
-    }
+    padding: 40px;
+    border-radius: 24px;
+    max-width: 541px;
   }
 
   .close-btn {
@@ -44,23 +32,28 @@ export const StylrdPopUpModal = styled.div`
     border: none;
     background-color: transparent;
     position: absolute;
-    top: 16px;
-    right: 0;
+    top: 10px;
+    right: -17px;
     transform: translateX(-50%);
     z-index: 2;
     color: var(--black);
     transition: all 0.3s;
-  }
-  .closeModal {
-    fill: currentColor;
-  }
-  .close-btn:hover,
-  .close-btn:focus,
-  .close-btn:active {
-    color: var(--violet);
+
+    &:hover,
+    &:focus,
+    &:focus {
+      fill: #0b44cd;
+    }
   }
 
+  .card-img {
+    border-radius: 14px;
+    width: 100%;
+    object-fit: cover;
+    height: 248px;
+  }
   .card-title {
+    margin-top: 14px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
@@ -80,30 +73,24 @@ export const StylrdPopUpModal = styled.div`
     color: rgba(18, 20, 23, 0.5);
   }
   .main-description {
+    margin-top: 14px;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.43;
     color: #121417;
   }
   .title-text {
+    margin-top: 24px;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.43;
     color: #121417;
   }
-  .text {
-    font-family: "Montserrat", sans-serif;
+  .card-description {
     font-weight: 400;
     font-size: 12px;
     line-height: 1.5;
-    letter-spacing: -0.02em;
-    color: #363535;
-
-    border-radius: 35px;
-    padding: 7px 14px;
-    width: 133px;
-    height: 32px;
-    background: #f9f9f9;
+    color: rgba(18, 20, 23, 0.5);
   }
 
   .btn {
@@ -114,17 +101,39 @@ export const StylrdPopUpModal = styled.div`
     background: #3470ff;
     cursor: pointer;
     border: none;
+    margin-top: 24px;
 
     font-weight: 600;
     font-size: 14px;
     line-height: 1.43;
     color: #fff;
 
-    .btn:hover,
-    .btn:focus,
-    .btn:active {
+    &:hover,
+    &:focus {
       background: #0b44cd;
-      color: #fff;
+    }
+  }
+  .condition-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+
+    & p {
+      padding: 7px 14px;
+      border-radius: 35px;
+      background: #f9f9f9;
+      font-family: "Montserrat", sans-serif;
+      color: #363535;
+      font-size: 12px;
+      line-height: calc(18 / 12);
+      letter-spacing: -0.24px;
+    }
+
+    & span {
+      color: #3470ff;
+      font-weight: 600;
     }
   }
 `;

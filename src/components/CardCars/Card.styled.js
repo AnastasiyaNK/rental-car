@@ -6,12 +6,27 @@ export const StyledCard = styled.li`
   flex-direction: column;
   width: 100%;
   height: 426px;
+  position: relative;
 
   .card-img {
     border-radius: 14px;
     width: 100%;
     height: 268px;
     object-fit: cover;
+  }
+  .heart-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    top: 15px;
+    right: 15px;
+    transition: all 0.3s;
+    width: 18px;
+    height: 18px;
+    padding: 0;
   }
   .wrapper {
     display: flex;

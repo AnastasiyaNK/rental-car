@@ -29,11 +29,12 @@ const PopUpModal = () => {
     };
 
     window.addEventListener("keydown", handleEscapeClick);
-
+    document.body.style.overflow = open ? "hidden" : "auto";
     return () => {
       window.removeEventListener("keydown", handleEscapeClick);
+      document.body.style.overflow = "auto";
     };
-  }, [dispatch]);
+  }, [dispatch, open]);
 
   useEffect(() => {
     if (selectedCardId !== null) {
@@ -68,71 +69,65 @@ const PopUpModal = () => {
           >
             <IconClose className="close-btn-svg" />
           </button>
-          <div className="container">
-            <img
-              src={carDetails?.img}
-              alt={carDetails?.description}
-              className="image"
-            />
-            <div className="title">
-              <p>
-                {carDetails?.make}{" "}
-                <span className="model">{carDetails?.model}</span>,{" "}
-                {carDetails?.year}
-              </p>
-            </div>
-            <div className="options">{options?.join(" | ")}</div>
-            <p>{carDetails?.description}</p>
-            <div>
-              <h3>Accessories and functionalities:</h3>
-              <p>{carDetails?.accessories.join(" | ")}</p>
-            </div>
-            <div>
-              <h3>Rental Conditions: </h3>
-              <p>
-                {conditions?.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-                Mileage: <span>{carDetails?.mileage}</span>
-                Price: <span>{carDetails?.rentalPrice}</span>
-              </p>
-            </div>
+
+          <img
+            src={carDetails?.img}
+            alt={carDetails?.description}
+            className="card-img"
+          />
+          <div className="title">
+            <h3 className="card-title">
+              {carDetails?.make}{" "}
+              <span className="current-title">{carDetails?.model}</span>,{" "}
+              {carDetails?.year}
+            </h3>
           </div>
-          <button type="button" className="rentBtn">
+          <div className="card-description">{options?.join(" | ")}</div>
+          <p className="main-description">{carDetails?.description}</p>
+          <div>
+            <h4 className="title-text">Accessories and functionalities:</h4>
+            <p className="card-description">
+              {carDetails?.accessories.join(" | ")}
+            </p>
+          </div>
+
+          <h4 className="title-text">Rental Conditions: </h4>
+          <div className="condition-wrapper">
+            {conditions?.map((item, index) => (
+              <p className="text" key={`${carDetails?.id}00${index}`}>
+                {index !== 0 ? (
+                  item
+                ) : (
+                  <>
+                    Minimum age: <span>{item.substr(13, 2)}</span>
+                  </>
+                )}
+              </p>
+            ))}
+            <p>
+              Mileage:{" "}
+              <span className="current-number">{carDetails?.mileage}</span>
+            </p>
+            <p className="text">
+              Price:{" "}
+              <span className="current-number">{carDetails?.rentalPrice}</span>
+            </p>
+          </div>
+          {/* <div className="condition-wrapper">
+            <p className="text">
+              {conditions?.map((item) => (
+                <span key={item}> {item}</span>
+              ))}
+              Mileage:{" "}
+              <span className="current-number">{carDetails?.mileage}</span>
+              Price:{" "}
+              <span className="current-number">{carDetails?.rentalPrice}</span>
+            </p>
+          </div> */}
+
+          <button type="button" className="btn">
             Rental car
           </button>
-
-          {/* <img className="card-img" src={carDetails.img} alt="car" />
-
-          <h3 className="card-title">
-            {carDetails.make}{" "}
-            <span className="current-title">{carDetails.model}</span>,{" "}
-            {carDetails.year}
-          </h3>
-
-          <p className="card-description">{tags.join(" | ")}</p>
-
-          <p className="main-description">
-            The Buick Enclave is a stylish and spacious SUV known for its
-            comfortable ride and luxurious features.
-          </p>
-          <p className="title-text">Accessories and functionalities:</p>
-          <p className="card-description">
-            Leather seats | Panoramic sunroof | Power liftgate Premium audio
-            system Remote start Blind-spot monitoring
-          </p>
-          <p className="title-text">Rental Conditions:</p>
-          <p className="text">Minimum age : 25</p>
-          <p className="text">
-            Mileage: <span className="current-number"></span>
-            {carDetails.mileage}
-          </p>
-          <p className="text">
-            Price: <span className="current-number"></span>
-            {carDetails.rentalPrice}
-          </p>
-
-          <button className="btn">Rental car</button> */}
         </div>
       )}
     </StylrdPopUpModal>

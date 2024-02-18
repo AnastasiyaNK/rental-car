@@ -1,5 +1,5 @@
 import React from "react";
-import CarFoto from "assets/images/image.jpeg";
+import CarFoto from "assets/images/blueCar.png";
 import { StyledCard } from "./Card.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../redux/modalSlice";

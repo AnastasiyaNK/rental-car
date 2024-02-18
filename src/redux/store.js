@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { filterReducer } from "./filterSlice";
 
 const persistConfig = {
   key: "favoriteCars",
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     cars: persistReducer(persistConfig, carReducer),
     modal: modalReducer,
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

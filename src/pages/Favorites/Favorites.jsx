@@ -22,7 +22,6 @@ const Favorites = () => {
       <StyledMainPage>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}
-        <div></div>
 
         <ul className="cars-list">
           {favoriteCars?.map(
