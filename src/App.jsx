@@ -3,7 +3,7 @@ import PopUpModal from "components/PopUpModal/PopUpModal";
 import { ROUTE_PATH } from "helpers/constants";
 
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import {
   selectCarIsLoading,
   selectModalIsLoading,
@@ -25,6 +25,7 @@ function App() {
             <Route path={ROUTE_PATH.home} element={<Home />} />
             <Route path={ROUTE_PATH.catalog} element={<Main />} />
             <Route path={ROUTE_PATH.favorites} element={<Favorites />} />
+            <Route path="*" element={<Navigate to={ROUTE_PATH.home} />} />
           </Routes>
           <PopUpModal />
         </Suspense>
