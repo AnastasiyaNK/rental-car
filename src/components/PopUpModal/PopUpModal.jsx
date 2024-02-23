@@ -8,6 +8,7 @@ import {
   selectCardId,
   selectOpenModal,
 } from "../../redux/carsSlice.selectors";
+import { createPortal } from "react-dom";
 
 const PopUpModal = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const PopUpModal = () => {
     `EngineSize: ${carDetails?.engineSize}`,
   ];
 
-  return (
+  return createPortal(
     <StylrdPopUpModal onClick={handleOverlayClick}>
       {carDetails !== null && (
         <div className="pop-up-container">
@@ -113,17 +114,6 @@ const PopUpModal = () => {
               <span className="current-number">{carDetails?.rentalPrice}</span>
             </p>
           </div>
-          {/* <div className="condition-wrapper">
-            <p className="text">
-              {conditions?.map((item) => (
-                <span key={item}> {item}</span>
-              ))}
-              Mileage:{" "}
-              <span className="current-number">{carDetails?.mileage}</span>
-              Price:{" "}
-              <span className="current-number">{carDetails?.rentalPrice}</span>
-            </p>
-          </div> */}
 
           <a href="tel: +380730000000">
             <button type="button" className="btn">
@@ -132,7 +122,8 @@ const PopUpModal = () => {
           </a>
         </div>
       )}
-    </StylrdPopUpModal>
+    </StylrdPopUpModal>,
+    document.getElementById("portal")
   );
 };
 

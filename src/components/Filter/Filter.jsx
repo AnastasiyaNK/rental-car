@@ -45,11 +45,6 @@ const Filter = () => {
   const [mileageTo, setMileageTo] = useState("");
   const dispatch = useDispatch();
 
-  //   const setSelectedCarBrandOption = (option) =>
-  //     dispatch(setFilterBrand(option.label));
-  //   const setSelectedCarRentOption = (option) =>
-  //     dispatch(setFilterRent(option.label));
-
   const onSubmit = (e) => {
     e.preventDefault();
     if (carBrand) {

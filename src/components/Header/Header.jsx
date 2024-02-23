@@ -7,13 +7,12 @@ import CarImg from "assets/images/blueCar.png";
 
 const Header = () => {
   return (
-    <MainContainer>
-      <StyledHeader>
+    <StyledHeader>
+      <MainContainer>
         <div className="header-wrapper">
           <nav className="header-nav">
             <NavLink to={ROUTE_PATH.home}>
               <img className="test-logo" src={CarImg} alt="car"></img>
-              {/* <span>rental car</span> */}
             </NavLink>
             <NavLink to={ROUTE_PATH.catalog} className="nav-text">
               catalog
@@ -23,8 +22,8 @@ const Header = () => {
             </NavLink>
           </nav>
         </div>
-      </StyledHeader>
-    </MainContainer>
+      </MainContainer>
+    </StyledHeader>
   );
 };
 

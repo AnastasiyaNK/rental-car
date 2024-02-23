@@ -28,20 +28,21 @@ const Main = () => {
   const mileageTo = useSelector(selectMileageTo);
 
   const [page, setPage] = useState(1);
+  const [showLoadMore, setShowLoadMore] = useState(true);
+
   const heandlerLoadMore = () => {
     setPage(page + 1);
   };
 
   useEffect(() => {
-    dispatch(apiGetCars(page));
+    dispatch(apiGetCars(page))
+      .unwrap()
+      .then((data) => {
+        if (data.response.length < 12) {
+          setShowLoadMore(false);
+        }
+      });
   }, [dispatch, page]);
-
-  // const filteredCars = cars?.filter(car => {
-  //   if (carBrand) {
-  //     return car.make === carBrand
-  //   }
-  //   return true
-  // })
 
   const filteredCars = cars
     ?.filter((car) => {
@@ -66,20 +67,20 @@ const Main = () => {
       );
     })
     .filter((car) => {
-      if (mileageFrom === null && mileageTo === null) {
+      if (mileageFrom === "" && mileageTo === "") {
         return true;
       }
-      if (mileageFrom !== null && mileageTo !== null) {
+      if (mileageFrom !== "" && mileageTo !== "") {
         return (
           car.mileage <= parseInt(mileageTo, 10) &&
           car.mileage >= parseInt(mileageFrom, 10)
         );
       }
 
-      if (mileageFrom === null) {
+      if (mileageFrom === "") {
         return car.mileage <= parseInt(mileageTo, 10);
       }
-      if (mileageTo === null) {
+      if (mileageTo === "") {
         return car.mileage >= parseInt(mileageFrom, 10);
       }
       return true;
@@ -126,19 +127,11 @@ const Main = () => {
             }
           )}
         </ul>
-        {cars?.length !== null && (
+        {filteredCars?.length !== 0 && showLoadMore && (
           <button onClick={heandlerLoadMore} className="load-more">
             Load more
           </button>
         )}
-
-        {/* {isLoading ? (
-          <Loader />
-        ) : (
-          <button onClick={heandlerLoadMore} className="load-more">
-            Load more
-          </button>
-        )} */}
       </StyledMainPage>
     </MainContainer>
   );

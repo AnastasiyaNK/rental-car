@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  background-color: #e4e4e7;
   display: flex;
   width: 100%;
   .test-logo {
@@ -15,9 +16,6 @@ export const StyledHeader = styled.header`
 
     align-items: center;
     border-radius: 5px;
-    border: 1.5px solid #3470ff;
-    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header-nav {
     display: flex;

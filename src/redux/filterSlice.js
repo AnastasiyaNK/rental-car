@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const INITIAL_STATE = {
   carBrand: null,
   carRental: null,
-  mileageFrom: null,
-  mileageTo: null,
+  mileageFrom: "",
+  mileageTo: "",
 };
 
 const filterSlice = createSlice({

@@ -1,12 +1,12 @@
-import { MainContainer } from "../../MainContainer.styled";
 import React from "react";
-import CarPng from "assets/images/blueCar.png";
+
 import { StyledHome } from "./Home.styled";
+import { MainContainer } from "MainContainer.styled";
 
 const Home = () => {
   return (
-    <MainContainer>
-      <StyledHome>
+    <StyledHome>
+      <MainContainer>
         <div className="home-wrapper">
           <ul className="home-lisst">
             <li className="home-item">Wide selection of cars for any needs.</li>
@@ -42,9 +42,8 @@ const Home = () => {
             </li>
           </ul>
         </div>
-        <img className="img-logo" src={CarPng} alt="car" />
-      </StyledHome>
-    </MainContainer>
+      </MainContainer>
+    </StyledHome>
   );
 };
 
