@@ -25,4 +25,19 @@ export const StyledMainPage = styled.div`
     margin-top: 100px;
     margin-bottom: 100px;
   }
+  .notification {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.11;
+    color: #2e3f68;
+    text-align: center;
+
+    transition: all 0.3s;
+    text-decoration: none;
+    margin-top: 20px;
+
+    &.favorite {
+      margin-top: 40px;
+    }
+  }
 `;

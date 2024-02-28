@@ -68,7 +68,8 @@ export const StyledCard = styled.li`
     justify-content: center;
 
     border-radius: 12px;
-    background-color: #3470ff;
+    background-color: #4c7fac;
+    /* background-color: #3470ff; */
     cursor: pointer;
     border: none;
 
@@ -79,7 +80,7 @@ export const StyledCard = styled.li`
     color: #fff;
 
     &:hover {
-      background-color: #0b44cd;
+      background-color: #1e293b;
     }
 
     &:active {

@@ -22,6 +22,13 @@ const Favorites = () => {
       <StyledMainPage>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}
+        {!favoriteCars?.length && (
+          <div>
+            <p className="notification favorite">
+              You haven't chosen your favorite cars yet.
+            </p>
+          </div>
+        )}
 
         <ul className="cars-list">
           {favoriteCars?.map(

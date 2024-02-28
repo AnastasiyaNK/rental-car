@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { apiGetCars } from "../../redux/carsSlice";
+import { animateScroll as scroll } from "react-scroll";
 import {
   selectCarError,
   selectCarIsLoading,
@@ -15,6 +16,7 @@ import {
   selectMileageFrom,
   selectMileageTo,
 } from "../../redux/filterSlice.selectors";
+import ScrollToTop from "components/ScrollToTop/ScrollToTop";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -29,6 +31,22 @@ const Main = () => {
 
   const [page, setPage] = useState(1);
   const [showLoadMore, setShowLoadMore] = useState(true);
+
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handlerScroll = () => {
+      window.scrollY > 300 ? setShowButton(true) : setShowButton(false);
+    };
+    window.addEventListener("scroll", handlerScroll);
+    return () => {
+      window.removeEventListener("scroll", handlerScroll);
+    };
+  }, []);
+
+  const onScrollToTop = () => {
+    scroll.scrollToTop();
+  };
 
   const heandlerLoadMore = () => {
     setPage(page + 1);
@@ -91,9 +109,16 @@ const Main = () => {
       <StyledMainPage>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}
-        <div>
-          <Filter />
-        </div>
+
+        <Filter />
+        {!filteredCars?.length && (
+          <div>
+            <p className="notification">
+              No cars were found for your request, please try to choose other
+              parameters.
+            </p>
+          </div>
+        )}
 
         <ul className="cars-list">
           {filteredCars?.map(
@@ -133,6 +158,7 @@ const Main = () => {
           </button>
         )}
       </StyledMainPage>
+      <ScrollToTop visibleButton={showButton} onScroll={onScrollToTop} />
     </MainContainer>
   );
 };

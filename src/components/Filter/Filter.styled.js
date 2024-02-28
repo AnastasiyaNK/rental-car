@@ -77,13 +77,13 @@ export const StyledFilter = styled.form`
     line-height: 1.43;
     border: transparent;
     border-radius: 12px;
-    background: #3470ff;
+    background: #4c7fac;
     cursor: pointer;
     transition: all 0.3s;
 
     &:hover,
     &:focus {
-      background: #0b44cd;
+      background: #1e293b;
     }
   }
 `;

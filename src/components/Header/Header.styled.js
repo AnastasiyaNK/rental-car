@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: #e4e4e7;
+  background-color: #d4d4d8;
   display: flex;
   width: 100%;
   .test-logo {
@@ -26,7 +26,7 @@ export const StyledHeader = styled.header`
     font-weight: 500;
     font-size: 18px;
     line-height: 1.11;
-    color: #121417;
+    color: #2e3f68;
     text-transform: uppercase;
     transition: all 0.3s;
     text-decoration: none;
@@ -35,8 +35,8 @@ export const StyledHeader = styled.header`
       font-weight: 600;
       padding: 5px 15px;
       border-radius: 36px;
-      background: #ecf2ff;
-      color: black;
+      background: #4c7fac;
+      color: #fff;
     }
   }
 `;
