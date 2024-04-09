@@ -29,7 +29,7 @@ export const StyledFilter = styled.form`
     border-right: 1px solid rgba(138, 138, 137, 0.2);
     border-radius: 14px 0 0 14px;
     background-color: #f7f7fb;
-    width: 160px;
+    max-width: 160px;
     height: 48px;
     padding-left: 24px;
 
@@ -50,7 +50,7 @@ export const StyledFilter = styled.form`
     border-right: 1px solid rgba(138, 138, 137, 0.2);
     border-radius: 0 14px 14px 0;
     background-color: #f7f7fb;
-    width: 160px;
+    max-width: 160px;
     height: 48px;
     padding-left: 24px;
 
@@ -84,6 +84,37 @@ export const StyledFilter = styled.form`
     &:hover,
     &:focus {
       background: #1e293b;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 126px 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-column-gap: 15px;
+    grid-row-gap: 20px;
+    .input-contaiter {
+      display: flex;
+    }
+    .saerch-btn {
+      grid-area: 2 / 3 / 3 / 4;
+      margin-left: auto;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+
+    .saerch-btn {
+      width:100%;
+      grid-area: auto;
+    }
+    .input-from {
+      width: 100%;
+      max-width: 100%;
+    }
+    .input-to {
+      width: 100%;
+      max-width: 100%;
     }
   }
 `;

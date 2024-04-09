@@ -21,10 +21,12 @@ const Home = () => {
             <li className="home-item">
               Enjoy convenient and affordable cars at any location.
             </li>
+            <li className="home-item">
+              <Link to={ROUTE_PATH.catalog} className="home-link">
+                go to catalog
+              </Link>
+            </li>
           </ul>
-          <Link to={ROUTE_PATH.catalog} className="home-link">
-            go to catalog
-          </Link>
         </div>
       </MainContainer>
     </StyledHome>

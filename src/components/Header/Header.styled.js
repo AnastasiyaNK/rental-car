@@ -39,4 +39,26 @@ export const StyledHeader = styled.header`
       color: #fff;
     }
   }
+
+  @media screen and (max-width: 425px) {
+    .header-wrapper {
+      padding: 0;
+    }
+    .header-nav {
+      gap: 20px;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-text {
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .header-nav {
+      gap: 15px;
+    }
+    .nav-text {
+      font-size: 14px;
+    }
+  }
 `;

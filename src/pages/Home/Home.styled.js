@@ -20,15 +20,23 @@ export const StyledHome = styled.div`
     width: fit-content;
   }
   .home-lisst {
-    padding: 80px 20px 20px;
+    padding: 25px 20px 20px 40px;
     max-width: 446px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-top: 60px;
   }
   .home-item {
     font-weight: 500;
     font-size: 22px;
-    line-height: 1%.11;
+    line-height: 1.11;
     color: #fff;
     margin-bottom: 8px;
+    &:last-child {
+      list-style-type: none;
+      padding-top: 15px;
+      margin-bottom: 0;
+    }
   }
   .img-logo {
     object-fit: contain;
@@ -39,10 +47,9 @@ export const StyledHome = styled.div`
     display: inline-block;
 
     padding: 12px 36px;
-    height: 44px;
+
     justify-content: center;
     text-decoration: none;
-    margin-left: 20px;
 
     border-radius: 12px;
     background-color: #4c7fac;
@@ -52,12 +59,27 @@ export const StyledHome = styled.div`
 
     align-items: center;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.43;
     color: #fff;
+    text-transform: uppercase;
 
     &:hover {
       background-color: #1e293b;
     }
+  }
+  @media screen and (max-width: 768px) {
+    .home-lisst {
+      max-width: 394px;
+    }
+    .home-item {
+      font-size: 18px;
+    }
+    .home-link {
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    background-position: -770px;
   }
 `;

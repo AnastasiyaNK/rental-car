@@ -70,7 +70,7 @@ const Filter = () => {
           styles={{
             control: (styles) => ({
               ...styles,
-              width: "224px",
+              width: "100%",
               border: "none",
               borderRadius: "14px",
               marginTop: 8,
@@ -101,7 +101,8 @@ const Filter = () => {
           styles={{
             control: (styles) => ({
               ...styles,
-              width: "125px",
+              width: "100%",
+              
               border: "none",
               borderRadius: "14px",
               marginTop: 8,
@@ -123,7 +124,7 @@ const Filter = () => {
       </div>
       <div className="input-wrapper">
         <label className="label">Car mileage / km</label>
-        <div>
+        <div className="input-contaiter">
           <input
             className="input-from"
             placeholder="From"

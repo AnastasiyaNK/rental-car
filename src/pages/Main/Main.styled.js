@@ -40,4 +40,16 @@ export const StyledMainPage = styled.div`
       margin-top: 40px;
     }
   }
+  @media screen and (max-width: 768px) {
+    .cars-list {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .cars-list {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+    }
+  }
 `;
